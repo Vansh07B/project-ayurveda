@@ -1,0 +1,23 @@
+
+.navbar-brand img {
+    height: 50px;
+}
+.carousel-item img {
+    height: 400px;
+    object-fit: cover;
+}
+.card img {
+    height: 200px;
+    object-fit: cover;
+}
+.contact-section {
+    background: #f8f9fa;
+    padding: 40px;
+    border-radius: 10px;
+}
+footer {
+    background: #343a40;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
