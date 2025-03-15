@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ayurvedic Plants</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/ayurveda_plants.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#"><img src="logo.png" alt="Logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Shop Now</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Jumbotron with Slideshow -->
+<div class="jumbotron">
+    <div class="container text-center">
+        <h1 class="display-4">Welcome to Ayurvedic Plants</h1>
+        <p class="lead">Discover the healing power of nature with our premium Ayurvedic plants.</p>
+
+        <!-- Carousel for Newly Added Herbs -->
+        <div id="newHerbsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="3000">
+                    <img src="ashwagandha.jpg" class="d-block w-100" alt="Ashwagandha">
+                    <div class="carousel-caption">
+                        <h5>Ashwagandha</h5>
+                        <p>Rejuvenates the body and reduces stress.</p>
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="3000">
+                    <img src="brahmi.jpg" class="d-block w-100" alt="Brahmi">
+                    <div class="carousel-caption">
+                        <h5>Brahmi</h5>
+                        <p>Enhances memory and cognitive function.</p>
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="3000">
+                    <img src="tulsi.jpg" class="d-block w-100" alt="Tulsi">
+                    <div class="carousel-caption">
+                        <h5>Tulsi</h5>
+                        <p>Boosts immunity and reduces stress.</p>
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="3000">
+                    <img src="neem.jpg" class="d-block w-100" alt="Neem">
+                    <div class="carousel-caption">
+                        <h5>Neem</h5>
+                        <p>Purifies blood and detoxifies the body.</p>
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="3000">
+                    <img src="pippali.jpg" class="d-block w-100" alt="Pippali">
+                    <div class="carousel-caption">
+                        <h5>Pippali</h5>
+                        <p>Improves respiratory health.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#newHerbsCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#newHerbsCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="row">
+            <!-- Filter Section (Sidebar) -->
+            <aside class="col-md-3 sidebar">
+                <div class="filter-section">
+                    <h4>Filter by Category</h4>
+                    <button class="filter-btn" data-category="all">
+                        <i class="fas fa-seedling"></i> All Plants
+                    </button>
+                    <button class="filter-btn" data-category="rasayana">
+                        <i class="fas fa-spa"></i> Rasayana (Rejuvenating)
+                    </button>
+                    <button class="filter-btn" data-category="medhya">
+                        <i class="fas fa-brain"></i> Medhya (Brain-Boosting)
+                    </button>
+                    <button class="filter-btn" data-category="digestive">
+                        <i class="fas fa-leaf"></i> Digestive Herbs
+                    </button>
+                    <button class="filter-btn" data-category="immunity">
+                        <i class="fas fa-shield-virus"></i> Immunity-Boosting
+                    </button>
+                    <button class="filter-btn" data-category="detox">
+                        <i class="fas fa-recycle"></i> Detoxifying Herbs
+                    </button>
+                    <button class="filter-btn" data-category="pain-relief">
+                        <i class="fas fa-hand-holding-heart"></i> Pain Relief
+                    </button>
+                    <button class="filter-btn" data-category="respiratory">
+                        <i class="fas fa-lungs"></i> Respiratory Health
+                    </button>
+                </div>
+            </aside>
+
+            <!-- Plant Cards -->
+            <div class="col-md-9">
+                <div class="row" id="plant-container"></div>
+                <button id="view-more-btn" class="btn btn-primary mt-4">View More</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        const plants = [
+            { id: 1, name: 'Ashwagandha', category: 'rasayana', description: 'Rejuvenates the body and reduces stress.', image: 'ashwagandha.jpg', link: '#' },
+            { id: 2, name: 'Brahmi', category: 'medhya', description: 'Enhances memory and cognitive function.', image: 'brahmi.jpg', link: '#' },
+            { id: 3, name: 'Triphala', category: 'digestive', description: 'Supports digestion and detoxification.', image: 'triphala.jpg', link: '#' },
+            { id: 4, name: 'Giloy', category: 'immunity', description: 'Boosts immunity and fights infections.', image: 'giloy.jpg', link: '#' },
+            { id: 5, name: 'Neem', category: 'detox', description: 'Purifies blood and detoxifies the body.', image: 'neem.jpg', link: '#' },
+            { id: 6, name: 'Turmeric', category: 'detox', description: 'Anti-inflammatory and detoxifying properties.', image: 'turmeric.jpg', link: '#' },
+            { id: 7, name: 'Shallaki', category: 'pain-relief', description: 'Relieves pain and inflammation.', image: 'shallaki.jpg', link: '#' },
+            { id: 8, name: 'Vasaka', category: 'respiratory', description: 'Supports respiratory health.', image: 'vasaka.jpg', link: '#' },
+            { id: 9, name: 'Tulsi', category: 'immunity', description: 'Boosts immunity and reduces stress.', image: 'tulsi.jpg', link: '#' },
+            { id: 10, name: 'Amla', category: 'rasayana', description: 'Rich in Vitamin C and rejuvenates the body.', image: 'amla.jpg', link: '#' },
+            { id: 11, name: 'Haritaki', category: 'digestive', description: 'Supports digestion and detoxification.', image: 'haritaki.jpg', link: '#' },
+            { id: 12, name: 'Pippali', category: 'respiratory', description: 'Improves respiratory health.', image: 'pippali.jpg', link: '#' },
+        ];
+
+        let visiblePlants = 8;
+        const plantContainer = document.getElementById('plant-container');
+        const viewMoreBtn = document.getElementById('view-more-btn');
+
+        function renderPlants(category = 'all') {
+            plantContainer.innerHTML = '';
+            const filteredPlants = category === 'all' ? plants : plants.filter(plant => plant.category === category);
+            filteredPlants.slice(0, visiblePlants).forEach(plant => {
+            const card = `
+                <div class="col-md-3 mb-4">
+                    <div class="card" onclick="window.location.href='http://localhost/Hackethon/herbview.php?id=${plant.id}'">
+                        <img src="${plant.image}" class="card-img-top" alt="${plant.name}">
+                        <div class="card-body">
+                            <h5 class="card-title">${plant.name}</h5>
+                            <p class="card-text">${plant.description}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            plantContainer.innerHTML += card;
+        });
+        viewMoreBtn.style.display = filteredPlants.length > visiblePlants ? 'block' : 'none';
+        }
+
+
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                renderPlants(button.dataset.category);
+            });
+        });
+
+        viewMoreBtn.addEventListener('click', () => {
+            visiblePlants += 8;
+            renderPlants();
+        });
+
+        // Initial render
+        renderPlants();
+    </script>
+</body>
+</html>
